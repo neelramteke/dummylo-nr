@@ -18,6 +18,12 @@ const COMPANIES = [
   "Software Experts", "IT Consulting Group"
 ];
 
+const PRODUCTS = [
+  "Smart Watch", "Wireless Earbuds", "Gaming Laptop", "4K Monitor", "Mechanical Keyboard",
+  "Gaming Mouse", "USB-C Hub", "External SSD", "Bluetooth Speaker", "Webcam",
+  "Power Bank", "Phone Case", "Laptop Stand", "Wireless Charger", "Graphics Tablet"
+];
+
 const generateId = (index: number) => `ID${String(index + 1).padStart(4, "0")}`;
 
 const generateName = () => {
@@ -64,6 +70,14 @@ const generateCompany = () => {
   return COMPANIES[Math.floor(Math.random() * COMPANIES.length)];
 };
 
+const generateRating = () => {
+  return (Math.floor(Math.random() * 5) + 1).toString();
+};
+
+const generateProduct = () => {
+  return PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)];
+};
+
 const generators: Record<string, (index: number, row?: any) => any> = {
   id: generateId,
   name: generateName,
@@ -74,6 +88,8 @@ const generators: Record<string, (index: number, row?: any) => any> = {
   phone: generatePhone,
   address: generateAddress,
   company: generateCompany,
+  rating: generateRating,
+  product: generateProduct,
 };
 
 export const generateDummyData = async (columns: Column[], rowCount: number) => {

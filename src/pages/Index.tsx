@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { exportToCSV } from "@/utils/csvExport";
 import { useToast } from "@/components/ui/use-toast";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import Navbar from "@/components/Navbar";
 
 const Index = () => {
   const [columns, setColumns] = useState<Column[]>([]);
@@ -49,22 +49,13 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted to-background">
+    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 dark:from-blue-900 dark:via-blue-800 dark:to-blue-950">
       <div className="absolute inset-0 bg-grid-white/10 bg-[size:20px_20px] [mask-image:linear-gradient(to_bottom,transparent,80%,white)] dark:bg-grid-black/10"></div>
-      <ThemeToggle />
+      <Navbar />
       
-      <div className="relative">
-        {/* Hero Section */}
-        <div className="w-full h-[300px] bg-black flex items-center justify-center mb-8">
-          <img
-            src="/lovable-uploads/0628990f-4dc5-41c0-af0a-a18f4d7e99e9.png"
-            alt="DUMMYLO"
-            className="h-full w-full object-contain"
-          />
-        </div>
-
+      <div className="relative pt-20">
         <div className="max-w-6xl mx-auto px-4 space-y-8">
-          <div className="bg-card rounded-lg shadow-lg p-6 border border-border">
+          <div className="bg-white/10 dark:bg-black/10 backdrop-blur-lg rounded-lg shadow-lg p-6 border border-white/20">
             <DataGeneratorForm
               columns={columns}
               setColumns={setColumns}
@@ -75,15 +66,15 @@ const Index = () => {
           </div>
 
           {generatedData.length > 0 && (
-            <div className="bg-card rounded-lg shadow-lg p-6 space-y-4 border border-border">
+            <div className="bg-white/10 dark:bg-black/10 backdrop-blur-lg rounded-lg shadow-lg p-6 space-y-4 border border-white/20">
               <div className="flex justify-between items-center">
-                <h2 className="text-xl font-semibold">Generated Data Preview</h2>
+                <h2 className="text-xl font-semibold text-white dark:text-white">Generated Data Preview</h2>
                 <Button
                   onClick={handleDownloadCSV}
                   variant="outline"
-                  className="group transition-all duration-300 hover:scale-105"
+                  className="group transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-400"
                 >
-                  <Download className="h-4 w-4 mr-2 group-hover:text-primary" />
+                  <Download className="h-4 w-4 mr-2 group-hover:text-white" />
                   Download CSV
                 </Button>
               </div>
@@ -91,6 +82,10 @@ const Index = () => {
             </div>
           )}
         </div>
+
+        <footer className="text-center py-8 text-white dark:text-white mt-8">
+          Made with ❤️ by Neel R
+        </footer>
       </div>
     </div>
   );
