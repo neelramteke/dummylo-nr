@@ -5,8 +5,14 @@ import { Column } from "@/types/generator";
 import { generateDummyData } from "@/utils/dataGenerator";
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
-import { exportToCSV } from "@/utils/csvExport";
+import { exportToCSV, exportToJSON, exportToXLSX } from "@/utils/dataExport";
 import { useToast } from "@/components/ui/use-toast";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import Navbar from "@/components/Navbar";
 
 const Index = () => {
@@ -32,7 +38,7 @@ const Index = () => {
     });
   };
 
-  const handleDownloadCSV = () => {
+  const handleExport = (format: string) => {
     if (generatedData.length === 0) {
       toast({
         title: "No data to export",
@@ -41,10 +47,22 @@ const Index = () => {
       });
       return;
     }
-    exportToCSV(generatedData, "dummy_data");
+
+    switch (format) {
+      case 'csv':
+        exportToCSV(generatedData, "dummy_data");
+        break;
+      case 'json':
+        exportToJSON(generatedData, "dummy_data");
+        break;
+      case 'xlsx':
+        exportToXLSX(generatedData, "dummy_data");
+        break;
+    }
+
     toast({
-      title: "CSV downloaded successfully",
-      description: "Your data has been exported to CSV format.",
+      title: "File downloaded successfully",
+      description: `Your data has been exported to ${format.toUpperCase()} format.`,
     });
   };
 
@@ -76,14 +94,28 @@ const Index = () => {
             <div className="bg-gray-50/50 dark:bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 space-y-4 border border-gray-200/20">
               <div className="flex justify-between items-center">
                 <h2 className="text-xl font-semibold">Generated Data Preview</h2>
-                <Button
-                  onClick={handleDownloadCSV}
-                  variant="outline"
-                  className="group transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white dark:hover:from-blue-400 dark:hover:to-purple-400"
-                >
-                  <Download className="h-4 w-4 mr-2 group-hover:text-white" />
-                  Download CSV
-                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className="group transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white dark:hover:from-blue-400 dark:hover:to-purple-400"
+                    >
+                      <Download className="h-4 w-4 mr-2 group-hover:text-white" />
+                      Download
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuItem onClick={() => handleExport('csv')}>
+                      Download CSV
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => handleExport('json')}>
+                      Download JSON
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => handleExport('xlsx')}>
+                      Download Excel
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
               <DataTable data={generatedData} columns={columns} />
             </div>

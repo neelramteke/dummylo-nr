@@ -25,6 +25,8 @@ const DATA_TYPES: { value: DataType; label: string }[] = [
   { value: "url", label: "URL" },
   { value: "rating", label: "Rating (1-5)" },
   { value: "product", label: "Product" },
+  { value: "randomNumber", label: "Random Number (1-80)" },
+  { value: "project", label: "Project Name" },
 ];
 
 interface DataGeneratorFormProps {

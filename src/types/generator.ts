@@ -18,7 +18,9 @@ export type DataType =
   | "color"
   | "url"
   | "rating"
-  | "product";
+  | "product"
+  | "randomNumber"
+  | "project";
 
 export interface Column {
   name: string;

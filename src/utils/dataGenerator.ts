@@ -55,6 +55,13 @@ const PRODUCTS = [
   "Wireless Router"
 ];
 
+const PROJECTS = [
+  "Project Phoenix", "Project Alpha", "Project Genesis", "Project Omega",
+  "Project Atlas", "Project Nova", "Project Titan", "Project Nexus",
+  "Project Aurora", "Project Quantum", "Project Vector", "Project Matrix",
+  "Project Zenith", "Project Horizon", "Project Spectrum"
+];
+
 const generateId = (index: number) => `ID${String(index + 1).padStart(4, "0")}`;
 const generateUUID = () => uuidv4();
 const generateFirstName = () => FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
@@ -118,6 +125,14 @@ const generateProduct = () => {
   return PRODUCTS[Math.floor(Math.random() * PRODUCTS.length)];
 };
 
+const generateRandomNumber = () => {
+  return Math.floor(Math.random() * 80) + 1;
+};
+
+const generateProject = () => {
+  return PROJECTS[Math.floor(Math.random() * PROJECTS.length)];
+};
+
 const generators: Record<string, (index: number, row?: any) => any> = {
   id: generateId,
   uuid: generateUUID,
@@ -139,6 +154,8 @@ const generators: Record<string, (index: number, row?: any) => any> = {
   url: generateURL,
   rating: generateRating,
   product: generateProduct,
+  randomNumber: generateRandomNumber,
+  project: generateProject,
 };
 
 export const generateDummyData = async (columns: Column[], rowCount: number) => {
