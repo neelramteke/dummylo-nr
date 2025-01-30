@@ -48,6 +48,13 @@ const URLS = [
   "https://sample.io", "https://website.com", "https://platform.co"
 ];
 
+const PRODUCTS = [
+  "Smartphone", "Laptop", "Tablet", "Smartwatch", "Headphones",
+  "Desktop Computer", "Camera", "Printer", "Monitor", "Keyboard",
+  "Mouse", "Speaker System", "Gaming Console", "External Hard Drive",
+  "Wireless Router"
+];
+
 const generateId = (index: number) => `ID${String(index + 1).padStart(4, "0")}`;
 const generateUUID = () => uuidv4();
 const generateFirstName = () => FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
