@@ -49,13 +49,18 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 dark:from-blue-900 dark:via-blue-800 dark:to-blue-950">
-      <div className="absolute inset-0 bg-grid-white/10 bg-[size:20px_20px] [mask-image:linear-gradient(to_bottom,transparent,80%,white)] dark:bg-grid-black/10"></div>
+    <div className="min-h-screen bg-white dark:bg-gray-950">
+      <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:20px_20px] dark:bg-grid-white/[0.02]"></div>
       <Navbar />
       
       <div className="relative pt-20">
         <div className="max-w-6xl mx-auto px-4 space-y-8">
-          <div className="bg-white/10 dark:bg-black/10 backdrop-blur-lg rounded-lg shadow-lg p-6 border border-white/20">
+          <div className="text-center space-y-4 py-12">
+            <h1 className="text-4xl md:text-5xl font-bold italic">DUMMYLO by NEEL R.</h1>
+            <p className="text-lg text-gray-600 dark:text-gray-400">Generate realistic dummy data for your database tables.</p>
+          </div>
+
+          <div className="bg-gray-50/50 dark:bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 border border-gray-200/20">
             <DataGeneratorForm
               columns={columns}
               setColumns={setColumns}
@@ -66,13 +71,13 @@ const Index = () => {
           </div>
 
           {generatedData.length > 0 && (
-            <div className="bg-white/10 dark:bg-black/10 backdrop-blur-lg rounded-lg shadow-lg p-6 space-y-4 border border-white/20">
+            <div className="bg-gray-50/50 dark:bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 space-y-4 border border-gray-200/20">
               <div className="flex justify-between items-center">
-                <h2 className="text-xl font-semibold text-white dark:text-white">Generated Data Preview</h2>
+                <h2 className="text-xl font-semibold">Generated Data Preview</h2>
                 <Button
                   onClick={handleDownloadCSV}
                   variant="outline"
-                  className="group transition-all duration-300 hover:scale-105 hover:bg-blue-500 hover:text-white dark:hover:bg-blue-400"
+                  className="group transition-all duration-300 hover:scale-105 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500 hover:text-white dark:hover:from-blue-400 dark:hover:to-purple-400"
                 >
                   <Download className="h-4 w-4 mr-2 group-hover:text-white" />
                   Download CSV
@@ -83,7 +88,7 @@ const Index = () => {
           )}
         </div>
 
-        <footer className="text-center py-8 text-white dark:text-white mt-8">
+        <footer className="text-center py-8 text-gray-600 dark:text-gray-400 mt-8">
           Made with ❤️ by Neel R
         </footer>
       </div>
