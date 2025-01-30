@@ -1,4 +1,24 @@
-export type DataType = "id" | "name" | "email" | "age" | "date" | "salary" | "phone" | "address" | "company" | "rating" | "product";
+export type DataType = 
+  | "id" 
+  | "uuid"
+  | "firstName"
+  | "lastName"
+  | "name"
+  | "email"
+  | "age"
+  | "date"
+  | "phone"
+  | "address"
+  | "city"
+  | "country"
+  | "company"
+  | "jobTitle"
+  | "salary"
+  | "boolean"
+  | "color"
+  | "url"
+  | "rating"
+  | "product";
 
 export interface Column {
   name: string;

@@ -1,12 +1,15 @@
 import { Column } from "@/types/generator";
+import { v4 as uuidv4 } from 'uuid';
 
 const FIRST_NAMES = [
+  "Neel", "Ojas", "Nishant", "Anchal", "Shreya", "Shamiksha", "Pawan", "Aayush",
   "John", "Emma", "Michael", "Sophia", "William", "Olivia", "James", "Ava",
   "Alexander", "Isabella", "Daniel", "Mia", "David", "Charlotte", "Joseph",
   "Amelia", "Matthew", "Harper", "Andrew", "Evelyn"
 ];
 
 const LAST_NAMES = [
+  "Patel", "Shah", "Kumar", "Singh", "Reddy", "Sharma", "Verma", "Rao",
   "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis",
   "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson",
   "Thomas", "Taylor", "Moore", "Jackson", "Martin"
@@ -15,20 +18,50 @@ const LAST_NAMES = [
 const COMPANIES = [
   "Tech Solutions Inc.", "Global Innovations", "Digital Dynamics", "Future Systems",
   "Smart Technologies", "Cloud Computing Co.", "Data Analytics Ltd.", "Web Solutions",
-  "Software Experts", "IT Consulting Group"
+  "Software Experts", "IT Consulting Group", "Infosys", "TCS", "Wipro", "HCL",
+  "Tech Mahindra", "Mindtree", "Persistent", "Mphasis"
 ];
 
-const PRODUCTS = [
-  "Smart Watch", "Wireless Earbuds", "Gaming Laptop", "4K Monitor", "Mechanical Keyboard",
-  "Gaming Mouse", "USB-C Hub", "External SSD", "Bluetooth Speaker", "Webcam",
-  "Power Bank", "Phone Case", "Laptop Stand", "Wireless Charger", "Graphics Tablet"
+const JOB_TITLES = [
+  "Software Engineer", "Product Manager", "Data Scientist", "UX Designer",
+  "Project Manager", "Business Analyst", "DevOps Engineer", "Full Stack Developer",
+  "Marketing Manager", "Sales Director", "HR Manager", "System Architect"
+];
+
+const CITIES = [
+  "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Chennai", "Pune", "Kolkata",
+  "New York", "London", "Tokyo", "Paris", "Berlin", "Sydney", "Toronto"
+];
+
+const COUNTRIES = [
+  "India", "USA", "UK", "Canada", "Australia", "Germany", "France", "Japan",
+  "Singapore", "UAE", "Brazil", "South Africa", "New Zealand", "Ireland"
+];
+
+const COLORS = [
+  "#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF",
+  "#FFA500", "#800080", "#008000", "#FFC0CB", "#A52A2A", "#808080"
+];
+
+const URLS = [
+  "https://example.com", "https://test.org", "https://demo.net",
+  "https://sample.io", "https://website.com", "https://platform.co"
 ];
 
 const generateId = (index: number) => `ID${String(index + 1).padStart(4, "0")}`;
+const generateUUID = () => uuidv4();
+const generateFirstName = () => FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
+const generateLastName = () => LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+const generateJobTitle = () => JOB_TITLES[Math.floor(Math.random() * JOB_TITLES.length)];
+const generateCity = () => CITIES[Math.floor(Math.random() * CITIES.length)];
+const generateCountry = () => COUNTRIES[Math.floor(Math.random() * COUNTRIES.length)];
+const generateBoolean = () => Math.random() < 0.5;
+const generateColor = () => COLORS[Math.floor(Math.random() * COLORS.length)];
+const generateURL = () => URLS[Math.floor(Math.random() * URLS.length)];
 
 const generateName = () => {
-  const firstName = FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)];
-  const lastName = LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)];
+  const firstName = generateFirstName();
+  const lastName = generateLastName();
   return `${firstName} ${lastName}`;
 };
 
@@ -80,6 +113,9 @@ const generateProduct = () => {
 
 const generators: Record<string, (index: number, row?: any) => any> = {
   id: generateId,
+  uuid: generateUUID,
+  firstName: generateFirstName,
+  lastName: generateLastName,
   name: generateName,
   email: (index: number, row: any) => generateEmail(row.name || generateName()),
   age: generateAge,
@@ -87,7 +123,13 @@ const generators: Record<string, (index: number, row?: any) => any> = {
   salary: generateSalary,
   phone: generatePhone,
   address: generateAddress,
+  city: generateCity,
+  country: generateCountry,
   company: generateCompany,
+  jobTitle: generateJobTitle,
+  boolean: generateBoolean,
+  color: generateColor,
+  url: generateURL,
   rating: generateRating,
   product: generateProduct,
 };

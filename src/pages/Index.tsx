@@ -56,11 +56,13 @@ const Index = () => {
       <div className="relative pt-20">
         <div className="max-w-6xl mx-auto px-4 space-y-8">
           <div className="text-center space-y-4 py-12">
-            <h1 className="text-4xl md:text-5xl font-bold italic">DUMMYLO by NEEL R.</h1>
+            <h1 className="text-4xl md:text-5xl font-bold italic">
+              <span className="text-purple-600 font-extrabold">DUMMYLO</span> by NEEL R.
+            </h1>
             <p className="text-lg text-gray-600 dark:text-gray-400">Generate realistic dummy data for your database tables.</p>
           </div>
 
-          <div className="bg-gray-50/50 dark:bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 border border-gray-200/20">
+          <div className="bg-gray-50/50 dark:bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 border border-gray-200/20 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
             <DataGeneratorForm
               columns={columns}
               setColumns={setColumns}
