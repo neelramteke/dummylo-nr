@@ -21,7 +21,7 @@ const Navbar = () => {
               <span className="text-purple-600">nr.</span>
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             {!isContactPage && (
               <Button
                 variant="ghost"
