@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import DataGeneratorForm from "@/components/DataGeneratorForm";
 import DataTable from "@/components/DataTable";
@@ -75,7 +76,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-4 space-y-8">
           <div className="text-center space-y-4 py-12">
             <h1 className="text-4xl md:text-5xl font-bold italic">
-              <span className="text-purple-600 font-extrabold">DUMMYLO</span> by NEEL R.
+              <span className="text-purple-600 font-extrabold">DUMMYLO</span>.
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-400">Generate realistic dummy data for your database tables.</p>
           </div>
@@ -123,7 +124,8 @@ const Index = () => {
         </div>
 
         <footer className="text-center py-8 text-gray-600 dark:text-gray-400 mt-8">
-          Made with ❤️ by Neel R
+          <p>Made with ❤️ by Neel R.</p>
+          <p className="text-sm mt-2">© 2024 Datanr. All rights reserved.</p>
         </footer>
       </div>
     </div>
