@@ -15,7 +15,7 @@ const Navbar = () => {
             </span>
           </div>
           <div className="flex items-center gap-6">
-            {!isContactPage && <Button variant="ghost" onClick={() => navigate("/contact")} className="hover:bg-transparent mx-[40px] my-[45px]">
+            {!isContactPage && <Button variant="ghost" onClick={() => navigate("/contact")} className="hover:bg-transparent my-[45px] mx-[13px]">
                 Contact Me
               </Button>}
             {isContactPage && <Button variant="ghost" onClick={() => navigate("/")} className="hover:bg-transparent">
