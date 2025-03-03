@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import Navbar from "@/components/Navbar";
+import { Squares } from "@/components/ui/squares-background";
 
 const Contact = () => {
   const [email, setEmail] = useState("");
@@ -45,20 +46,29 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
-      <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:20px_20px] dark:bg-grid-white/[0.02]"></div>
+    <div className="min-h-screen bg-[#060606] dark:bg-[#060606] text-white">
+      <div className="absolute inset-0 overflow-hidden">
+        <Squares 
+          direction="diagonal"
+          speed={0.5}
+          squareSize={40}
+          borderColor="#333" 
+          hoverFillColor="#222"
+          className="w-full h-full"
+        />
+      </div>
       <Navbar />
       
       <div className="relative pt-20">
         <div className="max-w-md mx-auto px-4 py-12">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold">Contact Me</h1>
-            <p className="text-gray-600 dark:text-gray-400 mt-2">
+            <p className="text-gray-400 mt-2">
               Feel free to reach out with any questions or feedback.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 border border-gray-700/30">
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-medium">
                 Email
@@ -70,6 +80,7 @@ const Contact = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="your@email.com"
+                className="bg-gray-800/50 border-gray-700"
               />
             </div>
 
@@ -83,7 +94,7 @@ const Contact = () => {
                 onChange={(e) => setMessage(e.target.value)}
                 required
                 placeholder="Your message here..."
-                className="min-h-[150px]"
+                className="min-h-[150px] bg-gray-800/50 border-gray-700"
               />
             </div>
 
@@ -98,9 +109,9 @@ const Contact = () => {
         </div>
       </div>
 
-      <footer className="text-center py-8 text-gray-600 dark:text-gray-400 mt-8">
-        <p>Made with ❤️ by Neel R.</p>
-        <p className="text-sm mt-2">© 2024 Datanr. All rights reserved.</p>
+      <footer className="text-center py-8 text-gray-400 mt-8">
+        <p>Made with ❤️ by Datanr</p>
+        <p className="text-sm mt-2">© {new Date().getFullYear()} Datanr. All rights reserved.</p>
       </footer>
     </div>
   );

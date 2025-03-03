@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import DataGeneratorForm from "@/components/DataGeneratorForm";
 import DataTable from "@/components/DataTable";
@@ -14,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Navbar from "@/components/Navbar";
+import { Squares } from "@/components/ui/squares-background";
 
 const Index = () => {
   const [columns, setColumns] = useState<Column[]>([]);
@@ -67,8 +69,17 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
-      <div className="absolute inset-0 bg-grid-black/[0.02] bg-[size:20px_20px] dark:bg-grid-white/[0.02]"></div>
+    <div className="min-h-screen bg-[#060606] dark:bg-[#060606] text-white">
+      <div className="absolute inset-0 overflow-hidden">
+        <Squares 
+          direction="diagonal"
+          speed={0.5}
+          squareSize={40}
+          borderColor="#333" 
+          hoverFillColor="#222"
+          className="w-full h-full"
+        />
+      </div>
       <Navbar />
       
       <div className="relative pt-20">
@@ -78,10 +89,10 @@ const Index = () => {
               <span className="text-purple-600 font-extrabold">DUMMYLO</span>
               <span className="text-purple-600">.</span>
             </h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400">Generate realistic dummy data for your database tables.</p>
+            <p className="text-lg text-gray-400">Generate realistic dummy data for your database tables.</p>
           </div>
 
-          <div className="bg-gray-50/50 dark:bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 border border-gray-200/20 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+          <div className="bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 border border-gray-700/30 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
             <DataGeneratorForm
               columns={columns}
               setColumns={setColumns}
@@ -92,7 +103,7 @@ const Index = () => {
           </div>
 
           {generatedData.length > 0 && (
-            <div className="bg-gray-50/50 dark:bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 space-y-4 border border-gray-200/20">
+            <div className="bg-gray-900/50 backdrop-blur-lg rounded-lg shadow-lg p-6 space-y-4 border border-gray-700/30">
               <div className="flex justify-between items-center">
                 <h2 className="text-xl font-semibold">Generated Data Preview</h2>
                 <DropdownMenu>
@@ -123,9 +134,9 @@ const Index = () => {
           )}
         </div>
 
-        <footer className="text-center py-8 text-gray-600 dark:text-gray-400 mt-8">
-          <p>Made with ❤️ by Neel R.</p>
-          <p className="text-sm mt-2">© 2024 Datanr. All rights reserved.</p>
+        <footer className="text-center py-8 text-gray-400 mt-8">
+          <p>Made with ❤️ by Datanr</p>
+          <p className="text-sm mt-2">© {new Date().getFullYear()} Datanr. All rights reserved.</p>
         </footer>
       </div>
     </div>
